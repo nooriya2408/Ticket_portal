@@ -1,7 +1,7 @@
 // src/pages/Login.js
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
@@ -60,6 +60,13 @@ function Login() {
           Login
         </button>
       </form>
+    <p className="text-sm text-gray-600">
+  Don't have an account?{' '}
+  <Link to="/register" className="text-blue-600 hover:underline font-medium">
+    Click register
+  </Link>
+</p>
+
     </div>
   );
 }

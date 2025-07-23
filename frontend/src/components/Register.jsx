@@ -1,7 +1,7 @@
 // src/pages/Register.js
 import { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 function Register() {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -62,6 +62,13 @@ function Register() {
           Register
         </button>
       </form>
+      <p className="text-sm text-gray-600">
+  Already have an account {' '}
+  <Link to="/" className="text-green-600 hover:underline font-medium">
+    login
+  </Link>
+</p> 
+
     </div>
   );
 }
