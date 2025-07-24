@@ -17,7 +17,11 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors({
+  origin: "https://ticket-portal-jet.vercel.app", // 👈 Add your deployed frontend URL here
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
 app.use(express.json());
 app.use('/api/auth',authRoutes)
 //app.use('/api/form',formRoutes)

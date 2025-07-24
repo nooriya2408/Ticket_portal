@@ -10,18 +10,18 @@ function TicketDetails() {
   const [contact, setContact] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/freshdesks/tickets`)
+    axios.get(`${import.meta.env.VITE_API_URL}/freshdesks/tickets`)
       .then(res => {
         const found = res.data.find(t => t.id === parseInt(id));
         setTicket(found);
 
        if (found?.requester_id) {
-  axios.get(`http://localhost:5000/freshdesks/contacts/${found.requester_id}`)
+  axios.get(`${import.meta.env.VITE_API_URL}/freshdesks/contacts/${found.requester_id}`)
     .then(res => {
       const email = res.data.email;
       console.log("Fetched requester email:", email);
 
-      axios.get(`http://localhost:5000/hubspot/contact?email=${email}`)
+      axios.get(`${import.meta.env.VITE_API_URL}/hubspot/contact?email=${email}`)
         .then(r => setContact(r.data))
         .catch(() => console.log("No HubSpot contact"));
     })
@@ -30,7 +30,7 @@ function TicketDetails() {
 
       });
 
-    axios.get(`http://localhost:5000/freshdesks/ticket/${id}/conversations`)
+    axios.get(`${import.meta.env.VITE_API_URL}/freshdesks/ticket/${id}/conversations`)
       .then(res => setConversations(res.data))
       .catch(() => console.log("No conversation"));
   }, [id]);

@@ -16,7 +16,7 @@ function Login() {
     e.preventDefault();
     setError(null);
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
+      const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/auth/login`, form);
 
       // ✅ Store values correctly
       localStorage.setItem("token", res.data.token);
@@ -44,7 +44,7 @@ function Login() {
           required
         />
         <input
-          type="password"
+          type="text"
           name="password"
           placeholder="Password"
           className="w-full p-2 border rounded"

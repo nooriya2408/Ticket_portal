@@ -19,13 +19,13 @@ function TicketList() {
 
     const fetchTickets = async () => {
       try {
-        const ticketRes = await axios.get("http://localhost:5000/freshdesks/tickets");
+        const ticketRes = await axios.get(`${import.meta.env.VITE_API_URL}/freshdesks/tickets`);
         const allFetched = ticketRes.data;
         setAllTickets(allFetched);
         console.log("✅ All tickets fetched:", allFetched);
 
         // Get Freshdesk contact by email
-        const contactRes = await axios.get(`http://localhost:5000/freshdesks/contacts?email=${storedUser.email}`);
+        const contactRes = await axios.get(`${import.meta.env.VITE_API_URL}/freshdesks/contacts?email=${storedUser.email}`);
         const contactData = contactRes.data;
         console.log("✅ Freshdesk contact for email:", storedUser.email, contactData);
 

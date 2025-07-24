@@ -6,7 +6,7 @@ function WebhookLogs() {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/webhooks/logs")
+    axios.get(`${import.meta.env.VITE_API_URL}/webhooks/logs`)
       .then(res => setLogs(res.data))
       .catch(() => console.error("Failed to fetch webhook logs"));
   }, []);

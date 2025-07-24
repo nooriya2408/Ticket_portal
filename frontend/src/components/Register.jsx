@@ -16,7 +16,7 @@ function Register() {
     e.preventDefault();
     setError(null);
     try {
-      await axios.post("http://localhost:5000/api/auth/register", form);
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/register`, form);
       navigate("/");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
